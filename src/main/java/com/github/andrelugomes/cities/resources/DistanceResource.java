@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/distances")
 public class DistanceResource {
 
-    Logger log = LoggerFactory.getLogger(DistanceResource.class);
+    private final Logger log = LoggerFactory.getLogger(DistanceResource.class);
 
     private final DistanceService service;
 

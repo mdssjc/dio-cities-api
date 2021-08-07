@@ -24,7 +24,7 @@ public class PointType implements UserType {
     }
 
     @Override
-    public Class returnedClass() {
+    public Class<Point> returnedClass() {
         return Point.class;
     }
 
@@ -48,7 +48,8 @@ public class PointType implements UserType {
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index,
                             SharedSessionContractImplementor session)
-            throws HibernateException, SQLException {
+            throws HibernateException {
+        throw new UnsupportedOperationException();
     }
 
     @Override

@@ -24,7 +24,7 @@ import static java.lang.Math.*;
 public class DistanceService {
 
     private final CityRepository cityRepository;
-    Logger log = LoggerFactory.getLogger(DistanceService.class);
+    private final Logger log = LoggerFactory.getLogger(DistanceService.class);
 
     public Double distanceUsingMath(final Long city1, final Long city2, final EarthRadius unit) {
         log.info("distanceUsingMath({}, {}, {})", city1, city2, unit);
