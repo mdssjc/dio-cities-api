@@ -16,7 +16,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/states")
+@RequestMapping("api/v1/states")
 public class StateResource {
 
     private final StateRepository repository;

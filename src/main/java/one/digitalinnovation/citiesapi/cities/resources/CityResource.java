@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("cities")
+@RequestMapping("api/v1/cities")
 public class CityResource {
 
     private final CityRepository repository;

@@ -1,0 +1,257 @@
+openapi: 3.0.2
+info:
+  title: Cities API
+  description: Endpoints para cálculo de distâncias entre cidades.
+  contact:
+    name: Marcelo dos Santos
+    url: https://marcelo-mds.dev
+  version: 1.0.0
+servers:
+  - url: /api/v1
+    description: base api
+tags:
+  - name: state-resource
+    description: Operações para estados
+  - name: distance-resource
+    description: Operações para cálculo de distâncias entre cidades
+  - name: country-resource
+    description: Operações para paises
+  - name: city-resource
+    description: Operações para cidades
+paths:
+  /states:
+    get:
+      tags:
+        - state-resource
+      summary: Lista todos os estados
+      operationId: states
+      description: Lista todos os estados
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/State'
+  /distances/by-points:
+    get:
+      tags:
+        - distance-resource
+      summary: Calcula a distância entre as cidades em milhas
+      operationId: byPoints
+      description: Calcula a distância entre as cidades em milhas
+      parameters:
+        - name: from
+          description: ID da cidade de origem
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: to
+          description: ID da cidade de destino
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+                format: double
+  /distances/by-math:
+    get:
+      tags:
+        - distance-resource
+      summary: Calcula a distância entre as cidades por geometria
+      operationId: byMath
+      description: Calcula a distância entre as cidades por geometria
+      parameters:
+        - name: from
+          description: ID da cidade de origem
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: to
+          description: ID da cidade de destino
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: unit
+          description: Unidade de medida
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - METERS
+              - KILOMETERS
+              - MILES
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+                format: double
+  /distances/by-cube:
+    get:
+      tags:
+        - distance-resource
+      summary: Calcula a distância entre as cidades em metros
+      operationId: byCube
+      description: Calcula a distância entre as cidades em metros
+      parameters:
+        - name: from
+          description: ID da cidade de origem
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: to
+          description: ID da cidade de destino
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+                format: double
+  /countries:
+    get:
+      tags:
+        - country-resource
+      summary: Lista todos os paises
+      operationId: cities
+      description: Lista todos os paises
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+  /cities:
+    get:
+      tags:
+        - city-resource
+      summary: Lista todas as cidades
+      operationId: cities_1
+      description: Lista todas as cidades
+      parameters:
+        - name: page
+          description: Paginação
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityPage'
+components:
+  schemas:
+    Country:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        portugueseName:
+          type: string
+        code:
+          type: string
+        bacen:
+          type: integer
+          format: int32
+    State:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        uf:
+          type: string
+        ibge:
+          type: integer
+          format: int32
+        country:
+          $ref: '#/components/schemas/Country'
+        ddd:
+          type: array
+          items:
+            type: integer
+            format: int32
+    Pageable:
+      type: object
+      properties:
+        page:
+          type: integer
+        size:
+          type: integer
+    CityPage:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Page'
+        - $ref: '#/components/schemas/City'
+    Page:
+      type: object
+      properties:
+        number:
+          type: integer
+        size:
+          type: integer
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        uf:
+          type: integer
+          format: int32
+        ibge:
+          type: integer
+          format: int32
+        geolocation:
+          type: string
+        location:
+          $ref: '#/components/schemas/Point'
+    Point:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        'y':
+          type: number
+          format: double

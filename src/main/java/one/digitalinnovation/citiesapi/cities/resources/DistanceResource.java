@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/distances")
+@RequestMapping("api/v1/distances")
 public class DistanceResource {
 
     private final Logger log = LoggerFactory.getLogger(DistanceResource.class);
