@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 	id 'pmd'
 	id 'checkstyle'
+	id 'info.solidsoft.pitest' version '1.5.1'
 }
 
 group = 'one.digitalinnovation.citiesapi'
@@ -46,4 +47,8 @@ pmd {
 checkstyle {
 	toolVersion "8.31"
 	configFile file("google_checks.xml")
+}
+
+pitest {
+	junit5PluginVersion = '0.12'
 }
