@@ -1,5 +1,6 @@
 package one.digitalinnovation.citiesapi.states.entities;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovation.citiesapi.countries.entities.Country;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import java.util.List;
  * @author Marcelo dos Santos
  */
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "State")
 @Table(name = "estado")

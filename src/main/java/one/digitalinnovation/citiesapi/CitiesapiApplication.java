@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Marcelo dos Santos
  */
 @SpringBootApplication
-public class CitiesApplication {
+public class CitiesapiApplication {
 
     public static void main(final String[] args) {
-        SpringApplication.run(CitiesApplication.class, args);
+        SpringApplication.run(CitiesapiApplication.class, args);
     }
 }

@@ -1,5 +1,6 @@
 package one.digitalinnovation.citiesapi.countries.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import javax.persistence.Table;
  * @author Marcelo dos Santos
  */
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Country")
 @Table(name = "pais")

@@ -1,9 +1,9 @@
 package one.digitalinnovation.citiesapi.cities.resources;
 
+import lombok.RequiredArgsConstructor;
 import one.digitalinnovation.citiesapi.cities.entities.City;
 import one.digitalinnovation.citiesapi.cities.service.DistanceService;
 import one.digitalinnovation.citiesapi.cities.service.EarthRadius;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Marcelo dos Santos
  */
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/distances")
 @RestController
-@RequestMapping("api/v1/distances")
 public class DistanceResource {
 
     private final Logger log = LoggerFactory.getLogger(DistanceResource.class);
