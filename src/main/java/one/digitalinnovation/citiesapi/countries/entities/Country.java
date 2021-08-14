@@ -21,17 +21,17 @@ import javax.persistence.Table;
 @Table(name = "pais")
 public class Country {
 
-    @Id
-    private Long id;
+  @Id
+  private Long id;
 
-    @Column(name = "nome")
-    private String name;
+  @Column(name = "nome")
+  private String name;
 
-    @Column(name = "nome_pt")
-    private String portugueseName;
+  @Column(name = "nome_pt")
+  private String portugueseName;
 
-    @Column(name = "sigla")
-    private String code;
+  @Column(name = "sigla")
+  private String code;
 
-    private Integer bacen;
+  private Integer bacen;
 }

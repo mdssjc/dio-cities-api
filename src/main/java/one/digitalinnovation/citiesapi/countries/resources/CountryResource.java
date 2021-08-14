@@ -19,10 +19,10 @@ import java.util.List;
 @RequestMapping("/api/v1/countries")
 public class CountryResource {
 
-    private final CountryRepository repository;
+  private final CountryRepository repository;
 
-    @GetMapping
-    public List<Country> countries() {
-        return repository.findAll();
-    }
+  @GetMapping
+  public List<Country> countries() {
+    return repository.findAll();
+  }
 }

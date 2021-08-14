@@ -27,27 +27,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(CountryResource.class)
 class CountryResourceTest {
 
-    @MockBean
-    CountryRepository repository;
+  @MockBean
+  CountryRepository repository;
 
-    @Autowired
-    MockMvc mockMvc;
+  @Autowired
+  MockMvc mockMvc;
 
-    @Autowired
-    ObjectMapper mapper;
+  @Autowired
+  ObjectMapper mapper;
 
-    @Test
-    void shouldReturnCountries() throws Exception {
-        List<Country> countries = Arrays.asList(
-                new Country(1L, "Brazil", "Brasil", "BR", 1058),
-                new Country(225L, "United States", "Estados Unidos", "US", 2496));
-        given(repository.findAll()).willReturn(countries);
+  @Test
+  void shouldReturnCountries() throws Exception {
+    List<Country> countries = Arrays.asList(
+        new Country(1L, "Brazil", "Brasil", "BR", 1058),
+        new Country(225L, "United States", "Estados Unidos", "US", 2496));
+    given(repository.findAll()).willReturn(countries);
 
-        mockMvc.perform(get("/api/v1/countries"))
-               .andExpect(status().isOk())
-               .andExpect(content().json(mapper.writeValueAsString(countries)))
-               .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    mockMvc.perform(get("/api/v1/countries"))
+           .andExpect(status().isOk())
+           .andExpect(content().json(mapper.writeValueAsString(countries)))
+           .andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
-        then(repository).should().findAll();
-    }
+    then(repository).should().findAll();
+  }
 }

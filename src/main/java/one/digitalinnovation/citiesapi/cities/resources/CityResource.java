@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CityResource {
 
-    private final CityRepository repository;
+  private final CityRepository repository;
 
-    @GetMapping
-    public Page<City> cities(final Pageable page) {
-        return repository.findAll(page);
-    }
+  @GetMapping
+  public Page<City> cities(final Pageable page) {
+    return repository.findAll(page);
+  }
 }

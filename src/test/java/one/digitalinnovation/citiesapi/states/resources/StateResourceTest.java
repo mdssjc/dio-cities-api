@@ -28,28 +28,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(StateResource.class)
 class StateResourceTest {
 
-    @MockBean
-    StateRepository repository;
+  @MockBean
+  StateRepository repository;
 
-    @Autowired
-    MockMvc mockMvc;
+  @Autowired
+  MockMvc mockMvc;
 
-    @Autowired
-    ObjectMapper mapper;
+  @Autowired
+  ObjectMapper mapper;
 
-    @Test
-    void shouldReturnCountries() throws Exception {
-        Country brazil = new Country(1L, "Brazil", "Brasil", "BR", 1058);
-        List<State> states = Arrays.asList(
-                new State(26L, "São Paulo", "SP", 35, brazil, Arrays.asList(11, 12, 13, 14, 15, 16, 17, 18, 19)),
-                new State(11L, "Minas Gerais", "MG", 31, brazil, Arrays.asList(34, 37, 31, 33, 35, 38, 32)));
-        given(repository.findAll()).willReturn(states);
+  @Test
+  void shouldReturnCountries() throws Exception {
+    Country brazil = new Country(1L, "Brazil", "Brasil", "BR", 1058);
+    List<State> states = Arrays.asList(
+        new State(26L, "São Paulo", "SP", 35, brazil, Arrays.asList(11, 12, 13, 14, 15, 16, 17, 18, 19)),
+        new State(11L, "Minas Gerais", "MG", 31, brazil, Arrays.asList(34, 37, 31, 33, 35, 38, 32)));
+    given(repository.findAll()).willReturn(states);
 
-        mockMvc.perform(get("/api/v1/states"))
-               .andExpect(status().isOk())
-               .andExpect(content().json(mapper.writeValueAsString(states)))
-               .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    mockMvc.perform(get("/api/v1/states"))
+           .andExpect(status().isOk())
+           .andExpect(content().json(mapper.writeValueAsString(states)))
+           .andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
-        then(repository).should().findAll();
-    }
+    then(repository).should().findAll();
+  }
 }

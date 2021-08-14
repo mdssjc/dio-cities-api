@@ -19,10 +19,10 @@ import java.util.List;
 @RequestMapping("api/v1/states")
 public class StateResource {
 
-    private final StateRepository repository;
+  private final StateRepository repository;
 
-    @GetMapping
-    public List<State> states() {
-        return repository.findAll();
-    }
+  @GetMapping
+  public List<State> states() {
+    return repository.findAll();
+  }
 }

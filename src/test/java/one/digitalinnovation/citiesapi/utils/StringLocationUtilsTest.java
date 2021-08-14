@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
  */
 class StringLocationUtilsTest {
 
-    @Test
-    void shouldExtractGeoLocationsFormString() {
-        String geoLocation = "(123, 321)";
+  @Test
+  void shouldExtractGeoLocationsFormString() {
+    String geoLocation = "(123, 321)";
 
-        Double[] transform = StringLocationUtils.transform(geoLocation);
+    Double[] transform = StringLocationUtils.transform(geoLocation);
 
-        Assertions.assertThat(transform[0]).isEqualTo(123.0);
-        Assertions.assertThat(transform[1]).isEqualTo(321.0);
-    }
+    Assertions.assertThat(transform[0]).isEqualTo(123.0);
+    Assertions.assertThat(transform[1]).isEqualTo(321.0);
+  }
 }
