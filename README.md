@@ -113,3 +113,11 @@ select earth_distance(
 ```shell script
 wget https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml
 ```
+
+### SonarQube
+
+* https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-gradle/
+
+```shell script
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```

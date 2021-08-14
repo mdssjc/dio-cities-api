@@ -8,6 +8,7 @@ plugins {
 	id 'name.remal.sonarlint' version '1.4.1'
 	id 'jacoco'
 	id 'info.solidsoft.pitest' version '1.5.1'
+	id 'org.sonarqube' version '3.3'
 }
 
 group = 'one.digitalinnovation.citiesapi'
@@ -44,16 +45,16 @@ test {
 }
 
 checkstyle {
-	toolVersion "8.31"
-	configFile file("google_checks.xml")
+	toolVersion '8.31'
+	configFile file('google_checks.xml')
 }
 
 pmd {
 	consoleOutput = true
-	toolVersion = "6.21.0"
+	toolVersion = '6.21.0'
 	rulePriority = 5
-	//ruleSetFiles = files("pmd-ruleset.xml")
-	ruleSets = ["category/java/bestpractices.xml"]
+	//ruleSetFiles = files('pmd-ruleset.xml')
+	ruleSets = ['category/java/bestpractices.xml']
 }
 
 spotbugsMain {
