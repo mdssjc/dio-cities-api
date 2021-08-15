@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DistanceResource {
 
-  private final Logger log = LoggerFactory.getLogger(DistanceResource.class);
-
+  private static final Logger log = LoggerFactory.getLogger(DistanceResource.class);
   private final DistanceService service;
 
   @GetMapping("/by-points")
