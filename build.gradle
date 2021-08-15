@@ -95,9 +95,20 @@ sonarlint {
 
 jacocoTestReport {
 	dependsOn test
+	reports {
+		html.enabled true
+		xml.enabled true
+	}
 }
 
 pitest {
 	testPlugin = 'junit5'
 	junit5PluginVersion = '0.14'
+}
+
+sonarqube {
+	properties {
+		property 'sonar.host.url', 'http://localhost:9000'
+		property 'sonar.login', '<token>'
+	}
 }
