@@ -41,13 +41,13 @@ class DistanceResourceTest {
 
   @Test
   void shouldCalculateByPoints() throws Exception {
-    given(service.distanceByPointsInMiles(ibateId, saoCarlosId)).willReturn(12426.810463475855);
+    given(service.distanceByPointsInMiles(ibateId, saoCarlosId)).willReturn(7.57102293200459);
 
     mockMvc.perform(get("/api/v1/distances/by-points")
                         .param("from", "4929")
                         .param("to", "5254"))
            .andExpect(status().isOk())
-           .andExpect(content().string("12426.810463475855"));
+           .andExpect(content().string("7.57102293200459"));
 
     then(service).should().distanceByPointsInMiles(ibateId, saoCarlosId);
   }
