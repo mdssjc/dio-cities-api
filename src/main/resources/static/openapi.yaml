@@ -15,7 +15,7 @@ tags:
   - name: distance-resource
     description: Operações para cálculo de distâncias entre cidades
   - name: country-resource
-    description: Operações para paises
+    description: Operações para países
   - name: city-resource
     description: Operações para cidades
 paths:
@@ -139,9 +139,9 @@ paths:
     get:
       tags:
         - country-resource
-      summary: Lista todos os paises
+      summary: Lista todos os países
       operationId: cities
-      description: Lista todos os paises
+      description: Lista todos os países
       responses:
         '200':
           description: OK
